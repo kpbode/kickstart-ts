@@ -19,6 +19,16 @@
   },
   "author": "Karl Bode <kpbode@me.com> (https://kpbo.de)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kpbode/kickstart-ts"
+  },
+  "keywords": [
+    "boilerplate",
+    "typescript",
+    "cli",
+    "create-app"
+  ],
   "devDependencies": {
     "@types/node": "^15.12.1",
     "@typescript-eslint/eslint-plugin": "^4.26.0",

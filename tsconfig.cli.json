@@ -1,12 +1,9 @@
 {
+  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2019",
     "sourceMap": true,
     "rootDir": "src/cli",
-    "esModuleInterop": true,
     "resolveJsonModule": true,
-    "strict": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "baseUrl": "src/cli",

@@ -1,4 +1,4 @@
-import chalk from "chalk";
+import { green } from "chalk";
 import { copyTemplate } from "create-template-folder";
 import fs from "fs";
 import path from "path";
@@ -12,16 +12,14 @@ export async function copyFilesFromTemplate(projectPath: string, options: Option
    if (await exists(projectPath)) {
       throw new Error(`directory exists: ${projectPath}`);
    } else {
-      const templateDirectory = path.resolve(__dirname, "../templates/simple");
+      const templateDirectory = path.resolve(__dirname, "..", "templates", options.template);
 
       const files = await copyTemplate(templateDirectory, projectPath, {
          name: options.name,
       });
 
       files.forEach((file) => {
-         console.log("created file: " + file);
+         console.log(`${green("+")} ${file}`);
       });
-
-      console.log(chalk.green("project created…"));
    }
 }

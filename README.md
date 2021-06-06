@@ -1,10 +1,14 @@
 This is just a simple CLI to kickstart Typescript projects.
 
+`kickstart-ts <name>`
+
+Specify the **name** of the project. This name will be integrated in the `package.json` and will also be the name of the directory that is being created.
+
 # Options
 
-## Name (`-n` or `--name`)
+## Template (`-t` or `--template`)
 
-Specify the name of the project. This name will be integrated in the `package.json` and will also be the name of the directory that is being created.
+The template to use for project creation. Currently, only *simple* is supported.
 
 ## Update (`-u` or `--update`)
 
@@ -16,4 +20,4 @@ Install all dependency with `npm install`.
 
 ## Git (`-g` or `--git`)
 
-Inialize git.
+Initialize an empty git repository.

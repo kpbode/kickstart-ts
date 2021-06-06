@@ -1,42 +1,21 @@
 #!/usr/bin/env node
-import { Command } from "commander";
-import * as path from "path";
+import { Command, Option } from "commander";
 import * as process from "process";
 
-import { copyFilesFromTemplate } from "./copyFilesFromTemplate";
-import { initializeGit } from "./initializeGit";
-import { installPackages } from "./installPackages";
+import { createProject } from "./createProject";
 import { Options } from "./Options";
-import { updatePackages } from "./updatePackages";
 
-async function run(): Promise<void> {
-   const program = new Command()
-      .requiredOption("-n,--name <name>", "Name of the Project to create")
-      .option("-g, --git, ", "Initialise GIT")
-      .option("-i, --install", "Install Dependencies right away")
-      .option("-u, --update", "Update Dependencies");
-
-   await program.parseAsync(process.argv);
-
-   const options = program.opts() as Options;
-
-   const projectPath = path.resolve(process.cwd(), options.name);
-
-   await copyFilesFromTemplate(projectPath, options);
-
-   if (options.git) {
-      await initializeGit(projectPath);
-   }
-
-   if (options.update) {
-      await updatePackages(projectPath);
-   }
-
-   if (options.install) {
-      await installPackages(projectPath);
-   }
-}
-
-run().catch((error) => {
-   console.error("Boom 💣", error);
-});
+new Command()
+   .arguments("<name>")
+   .addOption(new Option("-t, --template <template>", "The template to use").choices(["simple"]).default("simple"))
+   .option("-g, --git, ", "Initialise GIT")
+   .option("-i, --install", "Install Dependencies right away")
+   .option("-u, --update", "Update Dependencies")
+   .action(async (name: string, opts: unknown) => {
+      const options = opts as Options;
+      await createProject(name, options);
+   })
+   .parseAsync(process.argv)
+   .catch((error) => {
+      console.error("💥 The project creation failed.", error);
+   });

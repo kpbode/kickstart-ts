@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2019",
+        "sourceMap": true,
+        "rootDir": ".",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "strict": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "baseUrl": ".",
+        "typeRoots": [ "./node_modules/@types", "./src/@types" ]
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "ts-node": {
+        "files": true
+    }
+}

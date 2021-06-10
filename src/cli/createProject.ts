@@ -19,7 +19,7 @@ export async function createProject(name: string, options: Options): Promise<voi
    console.log(`Creating project ${blueBright(name)} at ${yellow(projectPath)}.`);
    console.log("");
 
-   await copyFilesFromTemplate(projectPath, options);
+   await copyFilesFromTemplate(projectPath, name, options);
    writeSuccessMessage("Project created.");
 
    if (options.git) {

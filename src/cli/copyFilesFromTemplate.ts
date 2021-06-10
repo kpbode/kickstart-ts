@@ -6,7 +6,7 @@ import util from "util";
 
 import { Options } from "./Options";
 
-export async function copyFilesFromTemplate(projectPath: string, options: Options): Promise<void> {
+export async function copyFilesFromTemplate(projectPath: string, projectName: string, options: Options): Promise<void> {
    const exists = util.promisify(fs.exists);
 
    if (await exists(projectPath)) {
@@ -15,7 +15,7 @@ export async function copyFilesFromTemplate(projectPath: string, options: Option
       const templateDirectory = path.resolve(__dirname, "..", "templates", options.template);
 
       const files = await copyTemplate(templateDirectory, projectPath, {
-         name: options.name,
+         name: projectName,
       });
 
       files.forEach((file) => {

@@ -1,6 +1,6 @@
 {
   "name": "@kpbode/kickstart-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple CLI to kickstart Typescript / node.js projects.",
   "bin": {
     "kickstart-ts": "bin/index.js"
@@ -14,6 +14,7 @@
     "clean": "rimraf -r bin",
     "compile": "tsc --project tsconfig.cli.json",
     "build": "npm run clean && npm run compile",
+    "prepublish": "npm run build",
     "start": "ts-node src/cli/index.ts",
     "lint": "eslint src/**/* --ext .js,.jsx,.ts,.tsx"
   },
@@ -30,10 +31,10 @@
     "create-app"
   ],
   "devDependencies": {
-    "@tsconfig/node14": "^1.0.0",
-    "@types/node": "^15.12.1",
-    "@typescript-eslint/eslint-plugin": "^4.26.0",
-    "@typescript-eslint/parser": "^4.26.0",
+    "@tsconfig/node14": "^1.0.1",
+    "@types/node": "^15.12.2",
+    "@typescript-eslint/eslint-plugin": "^4.26.1",
+    "@typescript-eslint/parser": "^4.26.1",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
